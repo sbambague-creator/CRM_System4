@@ -52,5 +52,32 @@ public class Main {
         
         GenerarReporte reporte = new GenerarReporte();
         reporte.generarReporte(oportunidades); 
+
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("\n=== BUSCAR CLIENTE POR ID ===");
+        System.out.print("Ingrese el ID del cliente a buscar: ");
+        
+        int idBuscado = scanner.nextInt();  // Lee el ID ingresado
+        Cliente clienteEncontrado = null;
+        
+        // Buscar en la lista de clientes
+        for (Cliente c : clientes) {
+            if (c.getId() == idBuscado) {  // Asegúrate de que Cliente tenga un getter getId()
+                clienteEncontrado = c;
+                break;
+            }
         }
+        
+        // Mostrar resultado
+        if (clienteEncontrado != null) {
+            System.out.println("\n✓ Cliente encontrado:");
+            clienteEncontrado.consultarCliente();
+        } else {
+            System.out.println("\n✗ No se encontró ningún cliente con ID: " + idBuscado);
+        }
+        
+        scanner.close();  // Cerrar el scanner
+        }
+        
 }
